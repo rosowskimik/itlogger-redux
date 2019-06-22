@@ -1,4 +1,4 @@
-import { SET_LOADING, GET_LOGS, LOGS_ERROR } from './actions/types';
+import { SET_LOADING, GET_LOGS, LOGS_ERROR } from './types';
 
 export const getLogs = () => async dispatch => {
   try {
