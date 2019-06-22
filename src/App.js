@@ -3,6 +3,8 @@ import React, { Fragment, useEffect } from 'react';
 import SearchBar from './components/layout/SearchBar';
 import AddBtn from './components/layout/AddBtn';
 import AddLogModal from './components/layout/AddLogModal';
+import AddTechModal from './components/techs/AddTechModal';
+import TechListModal from './components/techs/TechListModal';
 import Logs from './components/Logs/Logs';
 
 import 'materialize-css/dist/css/materialize.min.css';
@@ -19,9 +21,11 @@ const App = () => {
       <SearchBar />
       <div className='container'>
         <Logs />
-        <AddBtn />
-        <AddLogModal />
       </div>
+      <AddBtn />
+      <AddLogModal />
+      <AddTechModal />
+      <TechListModal />
     </Fragment>
   );
 };

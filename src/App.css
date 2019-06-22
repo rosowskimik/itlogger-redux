@@ -1,4 +1,8 @@
-.modal-style {
+.add-log-modal {
   width: 50%;
   height: 75%;
+}
+.add-tech-modal {
+  width: 50%;
+  height: 30%;
 }

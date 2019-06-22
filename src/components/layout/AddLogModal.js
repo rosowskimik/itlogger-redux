@@ -15,7 +15,7 @@ const AddLogModal = () => {
   };
 
   return (
-    <div id='add-log-modal' className='modal modal-fixed-footer modal-style'>
+    <div id='add-log-modal' className='modal modal-fixed-footer add-log-modal'>
       <div className='modal-content'>
         <h4 className='center'>Enter System Log</h4>
         <div className='row'>
@@ -70,6 +70,7 @@ const AddLogModal = () => {
         </div>
       </div>
       <div className='modal-footer'>
+        {/*eslint-disable-next-line */}
         <a
           href='#'
           className='btn btn-flat blue white-text waves-effect modal-close'
