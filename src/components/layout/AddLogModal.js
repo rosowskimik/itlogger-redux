@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const AddLogModal = () => {
+import { connect } from 'react-redux';
+import { addLog } from '../../actions/logActions';
+
+const AddLogModal = ({ addLog }) => {
   const [message, setMessage] = useState('');
   const [tech, setTech] = useState('');
   const [attention, setAttention] = useState(false);
@@ -13,7 +17,14 @@ const AddLogModal = () => {
       setTech('');
       setAttention(false);
     } else {
-      console.log(message, tech, attention);
+      const newLog = {
+        message,
+        tech,
+        attention,
+        date: new Date()
+      };
+      addLog(newLog);
+
       setMessage('');
       setTech('');
       setAttention(false);
@@ -52,9 +63,7 @@ const AddLogModal = () => {
               <option value='' disabled>
                 Select Technician
               </option>
-              <option value='Harry Potter' className='text-blue'>
-                Harry Potter
-              </option>
+              <option value='Harry Potter'>Harry Potter</option>
               <option value='Karol Error'>Karol Error</option>
             </select>
           </div>
@@ -89,4 +98,11 @@ const AddLogModal = () => {
   );
 };
 
-export default AddLogModal;
+AddLogModal.propTypes = {
+  addLog: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { addLog }
+)(AddLogModal);
