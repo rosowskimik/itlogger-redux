@@ -1,8 +1,8 @@
 .add-log-modal {
   width: 50%;
-  height: 75%;
+  height: 75% !important;
 }
 .add-tech-modal {
   width: 50%;
-  height: 30%;
+  height: 50% !important;
 }
