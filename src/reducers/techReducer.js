@@ -25,6 +25,12 @@ export default (state = initialState, action) => {
         techs: action.payload,
         loading: false
       };
+    case ADD_TECH:
+      return {
+        ...state,
+        techs: [...state.techs, action.payload],
+        loading: false
+      };
     default:
       return state;
   }
