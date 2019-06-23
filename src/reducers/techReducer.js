@@ -36,6 +36,12 @@ export default (state = initialState, action) => {
         ...state,
         techs: state.techs.filter(tech => tech.id !== action.payload)
       };
+    case TECHS_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+        loading: false
+      };
     default:
       return state;
   }

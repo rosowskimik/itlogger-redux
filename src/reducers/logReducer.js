@@ -58,7 +58,8 @@ export default (state = initalState, action) => {
     case LOGS_ERROR:
       return {
         ...state,
-        error: action.payload
+        error: action.payload,
+        loading: false
       };
     case SET_CURRENT:
       return {
