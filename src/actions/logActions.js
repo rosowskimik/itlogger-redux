@@ -1,4 +1,19 @@
-import { SET_LOADING, GET_LOGS, ADD_LOG, LOGS_ERROR } from './types';
+import {
+  SET_LOADING,
+  GET_LOGS,
+  ADD_LOG,
+  DELETE_LOG,
+  UPDATE_LOG,
+  LOGS_ERROR,
+  SET_CURRENT,
+  CLEAR_CURRENT
+} from './types';
+
+export const setLoading = () => {
+  return {
+    type: SET_LOADING
+  };
+};
 
 export const getLogs = () => async dispatch => {
   try {
@@ -30,8 +45,46 @@ export const addLog = log => async dispatch => {
   }
 };
 
-export const setLoading = () => {
+export const updateLog = log => async dispatch => {
+  try {
+    setLoading();
+    const res = await fetch(`/logs/${log.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(log),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const data = await res.json();
+    dispatch({ type: UPDATE_LOG, payload: data });
+  } catch (err) {
+    console.error(err.response.data);
+    dispatch({ type: LOGS_ERROR, payload: err.response.data });
+  }
+};
+
+export const deleteLog = id => async dispatch => {
+  try {
+    setLoading();
+    await fetch(`/logs/${id}`, {
+      method: 'DELETE'
+    });
+    dispatch({ type: DELETE_LOG, payload: id });
+  } catch (err) {
+    console.error(err.response.data);
+    dispatch({ type: LOGS_ERROR, payload: err.response.data });
+  }
+};
+
+export const setCurrent = log => {
   return {
-    type: SET_LOADING
+    type: SET_CURRENT,
+    payload: log
+  };
+};
+
+export const clearCurrent = () => {
+  return {
+    type: CLEAR_CURRENT
   };
 };

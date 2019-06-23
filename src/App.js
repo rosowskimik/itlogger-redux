@@ -6,6 +6,7 @@ import store from './store';
 import SearchBar from './components/layout/SearchBar';
 import AddBtn from './components/layout/AddBtn';
 import AddLogModal from './components/layout/AddLogModal';
+import EditLogModal from './components/layout/EditLogModal';
 import AddTechModal from './components/techs/AddTechModal';
 import TechListModal from './components/techs/TechListModal';
 import Logs from './components/Logs/Logs';
@@ -28,6 +29,7 @@ const App = () => {
         </div>
         <AddBtn />
         <AddLogModal />
+        <EditLogModal />
         <AddTechModal />
         <TechListModal />
       </Fragment>
