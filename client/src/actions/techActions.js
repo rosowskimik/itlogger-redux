@@ -15,19 +15,19 @@ export const setLoading = () => {
 export const getTechs = () => async dispatch => {
   try {
     setLoading();
-    const res = await fetch('/techs');
+    const res = await fetch('/api/techs');
     const data = await res.json();
     dispatch({ type: GET_TECHS, payload: data });
   } catch (err) {
-    console.error(err.response.statusText);
-    dispatch({ type: TECHS_ERROR, payload: err.response.statusText });
+    console.error(err);
+    dispatch({ type: TECHS_ERROR, payload: err });
   }
 };
 
 export const addTech = tech => async dispatch => {
   try {
     setLoading();
-    const res = await fetch('/techs', {
+    const res = await fetch('/api/techs', {
       method: 'POST',
       body: JSON.stringify(tech),
       headers: {
@@ -37,20 +37,20 @@ export const addTech = tech => async dispatch => {
     const data = await res.json();
     dispatch({ type: ADD_TECH, payload: data });
   } catch (err) {
-    console.error(err.response.statusText);
-    dispatch({ type: TECHS_ERROR, payload: err.response.statusText });
+    console.error(err);
+    // dispatch({ type: TECHS_ERROR, payload: err });
   }
 };
 
 export const deleteTech = id => async dispatch => {
   try {
     setLoading();
-    await fetch(`/techs/${id}`, {
+    await fetch(`/api/techs/${id}`, {
       method: 'DELETE'
     });
     dispatch({ type: DELETE_TECH, payload: id });
   } catch (err) {
-    console.error(err.response.statusText);
-    dispatch({ type: TECHS_ERROR, payload: err.response.statusText });
+    console.error(err);
+    dispatch({ type: TECHS_ERROR, payload: err });
   }
 };
