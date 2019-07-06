@@ -54,10 +54,9 @@ router.post(
 router.put('/:id', [], async (req, res) => {
   const { message, tech, attention } = req.body;
 
-  const logFields = { date: Date.now() };
+  const logFields = { date: Date.now(), attention };
   if (message) logFields.message = message;
   if (tech) logFields.tech = tech;
-  if (attention) logFields.attention = attention;
 
   try {
     let log = await Log.findById(req.params.id);
@@ -72,6 +71,23 @@ router.put('/:id', [], async (req, res) => {
 
     res.json(log);
   } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ statusText: 'Server Error' });
+  }
+});
+
+// @route						DELETE api/logs:id
+// @desc						Delete a log
+// @access					Public
+router.delete('/:id', [], async (req, res) => {
+  try {
+    let log = await Log.findById(req.params.id);
+
+    if (!log) return res.status(404).json({ statusText: "Log doesn't exist" });
+
+    await log.remove();
+    res.json('Log deleted successfully');
+  } catch (error) {
     console.error(err.message);
     res.status(500).json({ statusText: 'Server Error' });
   }

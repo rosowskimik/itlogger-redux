@@ -17,8 +17,7 @@ const AddTechModal = ({ addTech }) => {
       setLastName('');
     } else {
       const newTech = {
-        firstName,
-        lastName
+        tech: `${firstName} ${lastName}`
       };
       addTech(newTech);
 

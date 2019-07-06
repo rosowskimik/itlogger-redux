@@ -7,11 +7,13 @@ import {
   SEARCH_LOGS,
   LOGS_ERROR,
   SET_CURRENT,
-  CLEAR_CURRENT
+  CLEAR_CURRENT,
+  CLEAR_SEARCH
 } from '../actions/types';
 
 const initalState = {
   logs: null,
+  search: [],
   current: null,
   loading: false,
   error: null
@@ -39,20 +41,27 @@ export default (state = initalState, action) => {
       return {
         ...state,
         logs: state.logs.map(log =>
-          action.payload.id === log.id ? action.payload : log
+          action.payload._id === log._id ? action.payload : log
         ),
         loading: false
       };
     case SEARCH_LOGS:
       return {
         ...state,
-        logs: action.payload,
-        loading: false
+        search: state.logs.filter(
+          log =>
+            log.message.match(action.payload) || log.tech.match(action.payload)
+        )
+      };
+    case CLEAR_SEARCH:
+      return {
+        ...state,
+        search: []
       };
     case DELETE_LOG:
       return {
         ...state,
-        logs: state.logs.filter(log => action.payload !== log.id),
+        logs: state.logs.filter(log => action.payload !== log._id),
         loading: false
       };
     case LOGS_ERROR:
