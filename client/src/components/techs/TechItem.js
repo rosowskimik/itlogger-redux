@@ -8,15 +8,13 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 
 const TechItem = ({ tech, deleteTech }) => {
   const onDelete = () => {
-    deleteTech(tech.id);
+    deleteTech(tech._id);
     M.toast({ html: 'Technician Deleted' });
   };
 
   return (
     <li className='collection-item'>
-      <span>
-        {tech.firstName} {tech.lastName}
-      </span>
+      <span>{tech.tech}</span>
       {/*eslint-disable-next-line*/}
       <a href='#' className='secondary-content' onClick={onDelete}>
         <i className='material-icons grey-text'>delete</i>
