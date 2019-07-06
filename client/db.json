@@ -1,0 +1,37 @@
+{
+  "logs": [
+    {
+      "message": "Dead hard drive on 005",
+      "tech": "Karol Error",
+      "attention": true,
+      "date": "2019-06-23T14:38:43.240Z",
+      "id": 1
+    },
+    {
+      "message": "Workstation 007 not posting",
+      "tech": "Karol Error",
+      "attention": true,
+      "date": "2019-06-23T14:37:20.535Z",
+      "id": 2
+    },
+    {
+      "message": "Fixed wireless on 1122",
+      "tech": "Harry Potter",
+      "attention": false,
+      "date": "2019-06-23T14:35:36.410Z",
+      "id": 3
+    }
+  ],
+  "techs": [
+    {
+      "id": 1,
+      "firstName": "Harry",
+      "lastName": "Potter"
+    },
+    {
+      "id": 2,
+      "firstName": "Karol",
+      "lastName": "Error"
+    }
+  ]
+}
